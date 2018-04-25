@@ -1,151 +1,38 @@
 ---
-layout:     post
-title:      "SEO for Rails"
-subtitle:   ""
-description: "Improve the search engine ranking of your Rails app"
-date:       2015-02-23
-author:     "Vincent Daubry"
-header-img: "img/post-bg-02.jpg"
+layout: post
+title: 'Hati Yang Jernih '
+description: Improve the search engine ranking of your Rails app
+date: {}
+author: Vincent Daubry
+header-img: img/post-bg-02.jpg
+published: true
 ---
+![tumblr_inline_od3v8gARoj1r5bw7u_540.jpg]({{site.baseurl}}/_posts/tumblr_inline_od3v8gARoj1r5bw7u_540.jpg)
 
-### SEO for Rails
+**Oleh: Dr Hidayat Nur Wahid** 
 
-My latest project is a web app that give developers their ranking on github : [Gitub awards](http://github-awards.com/). I looked for advices on how to improve SEO, once again, so I decided to gather a little check list here, to save me some time next time.<br>
-These search engine optimization advices won't be specific for a Rails app but i'll focus on the tools in ruby that are available to help.  
+Alangkah bahagianya diriku, saya mendapatkan kiriman dari seorang sahabat nun jauh di sana. Seorang sahabat yang sekarang sedang sibuk menjadi menteri urusan Islam di negaranya. Namun, kesibukannya tidak menjadikannya lupa kepada diriku yang jauh darinya di sini. Tidak lupa untuk memberi nasihat yang sangat luar biasa ini. Saya pun meneruskan nasihatnya, agar diri yang lemah ini pun mendapatkan bagian dari kebaikan meneruskan nasihat kebaikan. Semoga bermanfaat… Selamat menyimak: 
 
-#### Step 1 : setup Google webmaster tools
+Ibadah yang sangat bernilai di sisi Allah SWT, sayangnya, keberadaannya ditengah manusia sangat sedikit. Yaitu: **Hati yang Jernih**.
 
-It takes only minutes to add your website on google webmaster tools and you'll be able to see how many pages are indexed, check that your sitemap was found, etc.
+Sebagian mereka berkata: **_“Setiap kali saya melewati rumah megah milik seorang muslim, saya berdo’a, semoga Allah SWT memberkahinya_”.**
 
-Just go to : [google webmaster tools](https://www.google.com/webmasters/tools/home?hl=en)
+Sebagiannya lagi berkata: _**“Setiap kali saya melihat satu kenikmatan pada seorang muslim (mobil, proyek, pabrik, istri shalihah, anak keturunan yang baik), saya berkata: ‘ya Allah..jadikanlah kenikmatan itu penolong baginya untuk taat kepada-Mu, dan berikanlah keberkahan kepadanya’”**_
 
-And follow the instructions.
+ Ada juga yang berkata: _“**Setiap kali saya melihat seorang muslim berjalan bersama istrinya, aku berdo’a kepada Allah, semoga Allah SWT menyatukan hati keduanya dalam rangka taat kepada Allah SWT”.**_
 
+ Ada lagi yang berkata: _**“Setiap kali saya bertemu pelaku maksiat, aku berdo’a, semoga Allah SWT memberikan hidayah kepadanya”.**_
 
-#### Step 2 : generate a sitemap
+Yang satu ini berkata: _**“Saya selalu berdo’a, semoga Allah SWT memberikan hidayah kepada hati manusia seluruhnya, lalu leher mereka terbebas dari belenggu dan wajah mereka terhindar dari neraka”.**_
 
-Generating a sitemap is as easy as generating a XML file, if you have only a few pages to index, just use [Nokogiri](http://www.nokogiri.org/). It would look like this :
+Yang ini lain lagi perkataannya: _**“Setiap kali mau tidur, aku berkata: ‘ya Allah Rabb-ku, siapapun kaum muslimin yang menzhalimi diriku, sesungguhnya aku telah memaafkannya, oleh karena itu, maafkanlah dia, sebab, saya terlalu hina untuk menjadi sebab seorang muslim tersiksa di neraka gara-gara aku’”.**_
 
-{% highlight ruby %}
+Semua itu adalah “hati-hati yang jernih”, alangkah perlunya kita kepada hati-hati semisal ini! Ya Allah..jangan halangi kami untuk memiliki hati seperti ini, sebab, hati yang jernih adalah penyebab kami masuk surga.  
 
-base_url = 'http://example.com'
-sitemap = Nokogiri::XML::Builder.new do |xml|
-  xml.urlset('xmlns' => 'http://www.sitemaps.org/schemas/sitemap/0.9') {
-    your_objects.find_each do |obj|
-      xml.url {
-        xml.loc base_url + an_url
-        xml.lastmod a_modification_date
-        xml.changefreq "monthly"
-        xml.priority "0.7"
-      }
-    end
-  }
-end.to_xml
+Pada suatu malam, al-Hasan al-Bashri berdo’a: “Ya Allah, berikanlah permaafan kepada siapa saja yang menzhalimi diriku”… dan ia terus menerus berdo’a demikian! Maka seorang lelaki berkata: “Wahai Abu Sai’d.. sungguh, tadi malam, aku telah mendengar engkau mendo’akan baik orang yang menzhalimimu, sehingga saya berangan-angan, kalau saja aku termasuk yang menzhalimi dirimu. Apa sih yang membuat engkau berbuat demikian?” Al-Hasan menjawab: “adalah firman Allah SWT: _"tetapi, barang siapa memaafkan dan berbuat baik (kepada yang berbuat jahat kepadanya), maka pahalanya dari Allah”_. (Q.S. asy-Syura: 40). 
 
-{% endhighlight %}
-
-Once the sitemap is generated, just put it either in your public folder.
-
-If your sitemap is more complex (thousands of pages for example) you can use the [sitemap_generator](https://github.com/kjvarga/sitemap_generator) gem. You'll get some nice features out of the box : slice your sitemap by 50.000 links, gzip them, and create the [sitemap index](https://support.google.com/webmasters/answer/75712?hl=en). It can also upload it to S3
-
-Follow the [gem readme](https://github.com/kjvarga/sitemap_generator), but here is a sample code :
-
-
-{% highlight ruby %}
-
-require 'sitemap_generator'
-
-SitemapGenerator::Sitemap.default_host = 'http://example.com'
-SitemapGenerator::Sitemap.create do
-  add '/home', :changefreq => 'daily', :priority => 0.9
-  add '/contact_us', :changefreq => 'weekly'
-end
-SitemapGenerator::Sitemap.ping_search_engines # Not needed if you use the rake tasks
-
-{% endhighlight %}
-
-
-What if you have millions of pages to index ?
-
-That's exactly the situation i faced with Github awards : i have a page for each Github user, so potentially that's more than 10 Millions pages to include in the sitemap.
-So should i generate a huge sitemap with all these pages ?
-
-You should add to the sitemap pages that are not easily reachable by the crawler through link walking. That's exactly the situation for Github awards : the vast majority of user pages are only accessible through the search, there is no way for a search engine crawler to find them on its own.
-
-Another thing to consider is the relevancy of these pages for a search engine, i.e: what is the amount of unique content on these pages ?
-For example on a e-commerce website each product may have a lot of unique content : user comments, even product description might be unique, so potentially it's valuable to index all these pages.
-For github awards i'm only generating stats for each user, there is basically nothing to index for google.
-
-Some discussion on Moz.com even suggest that this could hurt your ranking : "we've found it detrimental to give Google hundreds of pages to crawl on a sitemap that we don't feel are important" ([source](http://moz.com/community/q/should-xml-sitemaps-include-all-pages-or-just-the-deeper-ones))
-
-So in this case i decided not to include user pages to the sitemap.
-
-
-#### Step 3 : submit your sitemap
-
-Now that your sitemap is generated, go to Google webmaster tools. In the site dashboard wheck that your sitemap was found by google crawler. If not, submit it.
-
-Tips : If your have a very large sitemap, you should split it into several files, with a maximum of 50k urls each. Create a sitemap index describing all the sitemap files, this is an xml file looking like this :
-
-{% highlight xml %}
-
-<?xml version="1.0" encoding="UTF-8"?>
-   <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-   <sitemap>
-      <loc>http://www.example.com/sitemap1.xml.gz</loc>
-      <lastmod>2004-10-01T18:23:17+00:00</lastmod>
-   </sitemap>
-   <sitemap>
-      <loc>http://www.example.com/sitemap2.xml.gz</loc>
-      <lastmod>2005-01-01</lastmod>
-   </sitemap>
-   </sitemapindex>
-  
-{% endhighlight %}
-
-
-You can learn more about sitemap index [here](https://support.google.com/webmasters/answer/75712?hl=en) 
+Sungguh, itu semua adalah hati yang menjadi shalih dan telah dibina oleh para murabbi dan para mursyid dengan berlandaskan Al-Qur’an dan as-Sunnah, maka.. selamat atas surga yang didapatkannya. Janganlah engkau bersedih meratapi kebaikanmu, sebab, jika di dunia ini tidak ada yang menghargainya, yakinlah bahwa di langit ada yang memberkahinya. 
 
 
 
-#### Step 4 : add meta tags
-
-* __[Title](http://moz.com/learn/seo/title-tag)__ : Displayed in search engine results, important for SEO. Recommended format is : 'Primary Keyword - Secondary Keyword - Brand Name'
-
-* __[Description](http://moz.com/learn/seo/meta-description)__ : Not used for rankings, displayed in search results. Optimal length is about 150 characters. Use a description that will make the user click on this link
-
-* __[Keywords](http://moz.com/community/q/meta-keywords-should-we-use-them-or-not)__ : Not important for SEO, not displayed in search results, better to not include them.
-
-* __[nofollow](http://moz.com/learn/seo/robotstxt)__ : Tell crawlers to index that page but don't follow any links on that page. Can be combined with noindex in the same tag : "nofollow, noindex"
-
-* __[noindex](http://moz.com/learn/seo/robotstxt)__ : Tell crawlers not to index that page
-
-* __[canonical](http://moz.com/blog/complete-guide-to-rel-canonical-how-to-and-why-not)__ : Set the original url for the content (de-duplicate root domain and www)
-
-To include meta tags in your views use the [content_for](http://guides.rubyonrails.org/layouts_and_rendering.html#using-the-content-for-method) helper :
-
-In ``` application.html.erb ``` :
-
-{% highlight ruby %}
-
-<head>
-  ...
-  <%= yield :head %>
-</head>
-  
-{% endhighlight %}
-
-In your view : 
-
-{% highlight html %}
-
-<%= content_for :head do %>
-  <title> Github ranking | github-awards</title>
-  <meta name="description" content="Discover your ranking on Github ! Find out what is your rank by language, in your city and in your country"/>
-  <link rel="canonical" href=<%= welcome_url %> />
-<% end %>
-
-{% endhighlight %}
-
-
-That's it ! Any more ideas on how to improve a Ruby On Rails ranking on search engines ? If so Post a comment.
+ — _Betapa irinya pada manusia-manusia langit itu. Berasa kusam sekali hati ini.. ketika masih mengacuhkan tilawah kita, ketika ilmu yang masuk sulit kita cerna dan tidak mampu menambah ketaatan kita padaNya, ketika kita masih sering berprasangka tidak baik pada sesama muslim. Semua itu artinya hati kita jauh dari kejernihan. Faghfirlii..ya Allah.._
