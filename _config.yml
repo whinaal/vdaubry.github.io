@@ -1,13 +1,13 @@
 # Site settings
-title: vdaubry.github.io
-email: vdaubry@gmail.com
-author: Vincent Daubry
-description: "A blog about backend development, mobile development, and entrepreneurship"
+title: whinaal.github.io
+email: whinaayulestari18@gmail.com
+author: Whina Ayu Lestari 
+description: "A blog about learning machine and human contemplations"
 baseurl: ""
-url: "http://vdaubry.github.io"
-twitter_username: vdaubry
-github_username:  vdaubry
-linkedin_username: vincent daubry
+url: "http://whinaal.github.io"
+twitter_username: whinaal
+github_username:  whinaal
+linkedin_username: whina ayu lestari
 
 # Build settings
 markdown: kramdown
