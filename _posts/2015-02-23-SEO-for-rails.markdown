@@ -1,13 +1,12 @@
 ---
 layout: post
 title: 'Hati Yang Jernih '
-description: Improve the search engine ranking of your Rails app
+description: Hati Yang Jernih
 date: {}
-author: Vincent Daubry
+author: Whina Ayu Lestari
 header-img: img/post-bg-02.jpg
 published: true
 ---
-![tumblr_inline_od3v8gARoj1r5bw7u_540.jpg]({{site.baseurl}}/_posts/tumblr_inline_od3v8gARoj1r5bw7u_540.jpg)
 
 **Oleh: Dr Hidayat Nur Wahid** 
 
