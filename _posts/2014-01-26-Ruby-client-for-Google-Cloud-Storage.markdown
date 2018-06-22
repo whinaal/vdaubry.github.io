@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Ruby client for Google Cloud Storage "
+title:      "Ruby "
 subtitle:   ""
 description: "The sad story of downloading a file from Google Cloud Storage in Ruby"
 date:       2014-01-26
@@ -8,19 +8,7 @@ author:     "Vincent Daubry"
 header-img: "img/post-bg-03.jpg"
 ---
 
-###Ruby client for Google Cloud Storage 
-
-After using AWS  for some years, the Google Cloud Storage client for Ruby feels like stone age :
-
-* Oudated code sample
-* Overall complexity
-* Spaghetti documentation 
-* Client still doesn't support file download (after 5 years, come on !)
-
-API are everywhere and every single conference repeats the same mantra : "treat developers as customers", "think about onboarding".<br>
-Either Google is deaf, or they left the startups market to AWS. I wish them good luck competing with Microsoft Azure for the entreprise business.
-
-So enough bitching, if you need to download a file from Google Storage in Ruby, here is a fixed version of their code sample :
+OKe
 
 {% highlight ruby %}
 require 'google/api_client'
